@@ -146,6 +146,52 @@ Feature: Product Scenarios
         And I verify checkout overview page is opened
         Then I verify product description
 
+        Scenario: Verify cancel button on Checkout Page
+          Given I login with "standard_user"
+          When I click tshirt add to cart button
+          And I click the cart icon
+          And I verify cart page is opened
+          And I click the checkout button
+          And I verify checkout information page is opened
+          Then I verify continue button is visible
+
+          Scenario: Verify continue shopping button on cart page
+            Given I login with "standard_user"
+            When I click tshirt add to cart button
+            And I click the cart icon
+            And I verify cart page is opened
+            Then I verify continue shopping button
+
+            Scenario: Verify products prices and names on cart page
+              Given I login with "standard_user"
+              When I click tshirt add to cart button
+              And I click backpack add to cart button
+              And I click bike light add to cart button
+              And I verify products prices on products page
+              And I verify products names on products page
+              And I click the cart icon
+              And I verify cart page is opened
+              And I verify products names on cart page
+              Then I verify products prices on cart page
+
+  Scenario: Verify products prices and names on cart page with error_user
+    # NOT: Error_user'la giriş yapıldığında 2 den fazla ürün eklenemeyeceğinden otomasyon çalışmayacaktır.
+    Given I login with "error_user"
+    When I click tshirt add to cart button
+    And I click backpack add to cart button
+    And I click bike light add to cart button
+    And I verify products prices on products page
+    And I verify products names on products page
+    And I click the cart icon
+    And I verify cart page is opened
+    And I verify products names on cart page
+    Then I verify products prices on cart page
+
+
+
+
+
+
 
 
 

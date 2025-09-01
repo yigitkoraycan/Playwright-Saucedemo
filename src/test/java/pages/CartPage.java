@@ -1,5 +1,4 @@
 package pages;
-import com.microsoft.playwright.Page;
 import org.junit.Assert;
 import com.microsoft.playwright.Locator;
 import utils.GlobalVariables;
@@ -7,14 +6,28 @@ public class CartPage extends BasePage {
     private final Locator checkoutButton;
     private final Locator tshirtPriceInCartPage;
     private final Locator cartPageTitle;
-    private final Locator bikeLightTitleInCartPage;
-    private final Locator productQuantityInCartPage;
+    private final Locator bikeLightTitleOnCartPage;
+    private final Locator productQuantityOnCartPage;
+    private final Locator continueShoppingButton;
+    private final Locator backpackPriceOnCartPage;
+    private final Locator bikeLightPriceOnCartPage;
+    private final Locator backpackTitleOnCartPage;
+    private final Locator tshirtTitleOnCartPage;
+
+
+
+
     public CartPage(){
         checkoutButton = page.locator("#checkout");
-        tshirtPriceInCartPage = page.locator("//*[@id=\"cart_contents_container\"]/div/div[1]/div[3]/div[2]/div[2]/div");
+        tshirtPriceInCartPage = page.locator("div.cart_item:has-text('Sauce Labs Bolt T-Shirt') .inventory_item_price");
         cartPageTitle = page.locator(".title");
-        bikeLightTitleInCartPage = page.locator(".inventory_item_name");
-        productQuantityInCartPage = page.locator(".cart_quantity");
+        productQuantityOnCartPage = page.locator(".cart_quantity");
+        continueShoppingButton = page.locator("#continue-shopping");
+        backpackPriceOnCartPage = page.locator("div.cart_item:has-text('Sauce Labs Backpack') .inventory_item_price");
+        bikeLightPriceOnCartPage = page.locator("div.cart_item:has-text('Sauce Labs Bike Light') .inventory_item_price");
+        backpackTitleOnCartPage =  page.locator("div.cart_item:has-text('Sauce Labs Backpack') .inventory_item_name");
+        tshirtTitleOnCartPage = page.locator("div.cart_item:has-text('Sauce Labs Bolt T-Shirt') .inventory_item_name");
+        bikeLightTitleOnCartPage = page.locator("div.cart_item:has-text('Sauce Labs Bike Light') .inventory_item_name");
     }
 
 
@@ -34,13 +47,46 @@ public class CartPage extends BasePage {
     }
 
     public void verifyBikeLightIsVisible() {
-        boolean isBikeLightVisible = bikeLightTitleInCartPage.isVisible();
+        boolean isBikeLightVisible = bikeLightTitleOnCartPage.isVisible();
         Assert.assertTrue(isBikeLightVisible);
 
     }
 
     public void verifyTheQuantityOfTheProductShouldBe(String expectedQuantity) {
-        Assert.assertEquals(expectedQuantity,productQuantityInCartPage.textContent());
+        Assert.assertEquals(expectedQuantity,productQuantityOnCartPage.textContent());
+
+    }
+
+    public void verifyContinueShoppingButton() {
+        Assert.assertEquals("Continue Shopping",continueShoppingButton.textContent());
+    }
+
+    public void verifyProductPricesOnCartPage() {
+        String tshirtCartPrice = tshirtPriceInCartPage.textContent();
+        String tshirtProductPrice =GlobalVariables.getInstance().getString("tshirtProductPrice");
+        Assert.assertEquals(tshirtProductPrice,tshirtCartPrice);
+
+        String backpackCartPrice = backpackPriceOnCartPage.textContent();
+        String backpackProductPrice =GlobalVariables.getInstance().getString("backpackProductPrice");
+        Assert.assertEquals(backpackProductPrice,backpackCartPrice);
+
+        String bikeLightCartPrice = bikeLightPriceOnCartPage.textContent();
+        String bikeLightProductPrice =GlobalVariables.getInstance().getString("bikeLightProductPrice");
+        Assert.assertEquals(bikeLightProductPrice,bikeLightCartPrice);
+    }
+
+    public void verifyProductsNamesOnCartPage() {
+        String bikeLightCartTitle = bikeLightTitleOnCartPage.textContent();
+        String bikeLightProductTitle = GlobalVariables.getInstance().getString("bikeLightProductName");
+        Assert.assertEquals(bikeLightProductTitle,bikeLightCartTitle);
+
+        String backpackCartTitle = backpackTitleOnCartPage.textContent();
+        String backpackProductTitle = GlobalVariables.getInstance().getString("backpackProductName");
+        Assert.assertEquals(backpackProductTitle,backpackCartTitle);
+
+        String tshirtCartTitle = tshirtTitleOnCartPage.textContent();
+        String tshirtProductTitle = GlobalVariables.getInstance().getString("tshirtProductName");
+        Assert.assertEquals(tshirtProductTitle,tshirtCartTitle);
 
     }
 }

@@ -38,4 +38,20 @@ public class CartStepDefs {
     public void i_verify_the_quantity_of_the_product_should_be(String expectedQuantity) {
         cartPage.verifyTheQuantityOfTheProductShouldBe(expectedQuantity);
     }
+
+    @Then("I verify continue shopping button")
+    public void i_verify_continue_shopping_button() {
+        cartPage.verifyContinueShoppingButton();
+    }
+
+
+    @And("I verify products prices on cart page")
+    public void i_verify_products_prices_on_cart_page() {
+        cartPage.verifyProductPricesOnCartPage();
+    }
+
+    @And("I verify products names on cart page")
+    public void i_verify_products_names_on_cart_page() {
+        cartPage.verifyProductsNamesOnCartPage();
+    }
 }

@@ -19,6 +19,10 @@ public class ProductsPage extends BasePage {
     private final Locator backpackPriceInProductPage;
     private final Locator menuIcon;
     private final Locator logoutButton;
+    private final Locator bikeLightPriceOnProductPage;
+    private final Locator backpackTitleOnProductPage;
+    private final Locator tshirtTitleOnProductPage;
+    private final Locator bikeLightTitleOnProductPage;
 
 
     public ProductsPage(){
@@ -37,6 +41,10 @@ public class ProductsPage extends BasePage {
         backpackPriceInProductPage = page.locator(".inventory_item_price").nth(0);
         menuIcon = page.locator("#react-burger-menu-btn");
         logoutButton = page.locator("#logout_sidebar_link");
+        bikeLightPriceOnProductPage = page.locator(".inventory_item_price").nth(1);
+        backpackTitleOnProductPage = page.locator(".inventory_item_name:has-text('Sauce Labs Backpack')");
+        tshirtTitleOnProductPage = page.locator(".inventory_item_name:has-text('Sauce Labs Bolt T-Shirt')");
+        bikeLightTitleOnProductPage =page.locator(".inventory_item_name:has-text('Sauce Labs Bike Light')");
 
     }
 
@@ -108,6 +116,9 @@ public class ProductsPage extends BasePage {
 
     }
 
+
+
+
     public void clickTheMenuIcon() {
         menuIcon.click();
     }
@@ -122,5 +133,28 @@ public class ProductsPage extends BasePage {
 
     public void clickJacketAddToCartButton() {
         fleeceJacketAddToCartButton.click();
+    }
+
+
+
+    public void verifyProductsPricesOnProductsPage() {
+        String tshirtPrice = tshirtPriceInProductPage.textContent();
+        GlobalVariables.getInstance().addString("tshirtProductPrice",tshirtPrice);
+
+        String backpackPrice = backpackPriceInProductPage.textContent();
+        GlobalVariables.getInstance().addString("backpackProductPrice",backpackPrice);
+
+        String bikeLightProductPrice = bikeLightPriceOnProductPage.textContent();
+        GlobalVariables.getInstance().addString("bikeLightProductPrice",bikeLightProductPrice);
+
+    }
+
+    public void verifyProductNamesOnProductsPage() {
+        String tshirtTitle = tshirtTitleOnProductPage.textContent();
+        GlobalVariables.getInstance().addString("tshirtProductName",tshirtTitle);
+        String backpackTitle = backpackTitleOnProductPage.textContent();
+        GlobalVariables.getInstance().addString("backpackProductName",backpackTitle);
+        String bikeLightTitle = bikeLightTitleOnProductPage.textContent();
+        GlobalVariables.getInstance().addString("bikeLightProductName",bikeLightTitle);
     }
 }

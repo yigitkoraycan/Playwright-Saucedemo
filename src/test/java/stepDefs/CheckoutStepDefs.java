@@ -45,4 +45,8 @@ public class CheckoutStepDefs {
     public void i_verify_checkout_information_page_is_opened() {
         checkoutPage.verifyCheckoutInformationPage();
     }
+
+    @Then("I verify continue button is visible")
+    public void i_verify_continue_button_is_visible() {checkoutPage.verifyContinueButtonIsVisible();
+    }
 }

@@ -45,4 +45,9 @@ public class CheckoutPage extends BasePage {
         Assert.assertEquals("Checkout: Your Information",checkoutInformationTitle.textContent());
 
     }
+
+    public void verifyContinueButtonIsVisible() {
+        boolean isContinueButtonVisible = continueButton.isVisible();
+        Assert.assertTrue(isContinueButtonVisible);
+    }
 }

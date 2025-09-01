@@ -49,4 +49,39 @@ public class LoginStepDefs {
     }
 
 
+    @When("I fill username input with {string}")
+    public void i_fill_username_input_with(String username) {
+        loginPage.enterUsername(username);
+    }
+
+
+
+    @When("I fill password input with {string}")
+    public void i_fill_password_input_with(String password) {
+        loginPage.enterPassword(password);
+    }
+
+
+    @Then("I should see error message: Epic sadface: Password is required")
+    public void i_should_see_error_message_password_is_required() {
+        loginPage.verifyErrorMessagePasswordIsRequired();
+    }
+
+    @Then("I should see error message: Epic sadface: Username is required")
+    public void i_should_see_error_message_username_is_required() {
+        loginPage.verifyErrorMessageUsernameIsRequired();
+    }
+
+    @When("I fill username input with {string} and username input with {string}")
+    public void enter_wrong_username_and_password(String wrongUsername,String wrongPassword) {
+        loginPage.enterWrongUsername(wrongUsername);
+        loginPage.enterWrongPassword(wrongPassword);
+    }
+
+    @Then("I should see error message: Epic sadface: Username and password do not match any user in this service")
+    public void i_should_see_enter_wrong_username_and_password_error() {
+        loginPage.verifyErrorMessageWrongUsernameAndPassword();
+    }
+
+
 }

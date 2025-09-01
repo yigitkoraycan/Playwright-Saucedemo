@@ -114,4 +114,15 @@ public class ProductsStepDefs {
     public void i_click_the_backpack_product() {
         productsPage.clickTheBackpackProduct();
     }
+
+
+    @And("I verify products prices on products page")
+    public void i_verify_products_prices_on_products_page() {
+        productsPage.verifyProductsPricesOnProductsPage();
+    }
+
+    @And("I verify products names on products page")
+    public void i_verify_products_names_on_products_page() {
+        productsPage.verifyProductNamesOnProductsPage();
+    }
 }
