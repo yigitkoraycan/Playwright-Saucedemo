@@ -23,6 +23,7 @@ public class LoginPage extends BasePage {
     loginLogo = page.locator(".login_logo");
     errorMessage= page.locator("h3[data-test='error']");
 
+
     }
 
 
@@ -69,6 +70,11 @@ public class LoginPage extends BasePage {
 
     public void enterWrongPassword(String wrongPassword) {
         passwordInput.fill(wrongPassword);
+    }
+
+
+    public void verifyErrorMessageLockedOutUser() {
+        Assert.assertEquals("Epic sadface: Sorry, this user has been locked out.",errorMessage.textContent());
     }
 
 

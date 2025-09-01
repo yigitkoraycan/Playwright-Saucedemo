@@ -24,6 +24,12 @@ Feature: Login functionally on saucedemo
           And I click the login button
           Then I should see error message: Epic sadface: Username and password do not match any user in this service
 
+          Scenario: Verify error message when login with locked out user
+            Given I am on the login page
+            When I fill username input with "locked_out_user" and password input with "secret_sauce"
+            And I click the login button
+            Then I should see error message: Epic sadface: Sorry, this user has been locked out.
+
 
 
 

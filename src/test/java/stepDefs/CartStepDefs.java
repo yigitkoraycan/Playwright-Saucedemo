@@ -6,6 +6,7 @@ import io.cucumber.java.en.Then;
 import pages.CartPage;
 
 
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
 
 public class CartStepDefs {
@@ -53,5 +54,17 @@ public class CartStepDefs {
     @And("I verify products names on cart page")
     public void i_verify_products_names_on_cart_page() {
         cartPage.verifyProductsNamesOnCartPage();
+    }
+
+
+
+    @Then("I verify tshirt product price and cart price are not equal")
+    public void i_verify_tshirt_product_price_and_cart_price_are_not_equal() {
+        cartPage.verifyTshirtProductPriceAndCartPriceNotEqual();
+    }
+
+    @Then("I verify onesie product price and cart price are not equal")
+    public void i_verify_onesie_product_price_and_cart_price_are_not_equal() {
+        cartPage.verifyOnesieProductPriceAndCartPriceNotEqual();
     }
 }

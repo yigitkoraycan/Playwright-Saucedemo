@@ -125,4 +125,19 @@ public class ProductsStepDefs {
     public void i_verify_products_names_on_products_page() {
         productsPage.verifyProductNamesOnProductsPage();
     }
+
+    @When("I verify Twitter icon is visible")
+    public void i_verify_twitter_icon_is_visible() {
+        productsPage.verifyTwitterIconIsVisible();
+    }
+
+    @And("I verify Facebook icon is visible")
+    public void i_verify_facebook_icon_is_visible() {
+        productsPage.verifyFacebookIconIsVisible();
+    }
+
+    @Then("I verify LinkedIn icon is visible")
+    public void i_verify_linkedin_icon_is_visible() {
+        productsPage.verifyLinkedInIconIsVisible();
+    }
 }

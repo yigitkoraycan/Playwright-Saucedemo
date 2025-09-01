@@ -13,6 +13,7 @@ public class CartPage extends BasePage {
     private final Locator bikeLightPriceOnCartPage;
     private final Locator backpackTitleOnCartPage;
     private final Locator tshirtTitleOnCartPage;
+    private final Locator onesiePriceOnCartPage;
 
 
 
@@ -28,6 +29,7 @@ public class CartPage extends BasePage {
         backpackTitleOnCartPage =  page.locator("div.cart_item:has-text('Sauce Labs Backpack') .inventory_item_name");
         tshirtTitleOnCartPage = page.locator("div.cart_item:has-text('Sauce Labs Bolt T-Shirt') .inventory_item_name");
         bikeLightTitleOnCartPage = page.locator("div.cart_item:has-text('Sauce Labs Bike Light') .inventory_item_name");
+        onesiePriceOnCartPage = page.locator("div.cart_item:has-text('Sauce Labs Onesie') .inventory_item_price");
     }
 
 
@@ -88,5 +90,17 @@ public class CartPage extends BasePage {
         String tshirtProductTitle = GlobalVariables.getInstance().getString("tshirtProductName");
         Assert.assertEquals(tshirtProductTitle,tshirtCartTitle);
 
+    }
+
+    public void verifyTshirtProductPriceAndCartPriceNotEqual() {
+        String tshirtCartPrice = tshirtPriceInCartPage.textContent();
+        String tshirtProductPrice = GlobalVariables.getInstance().getString("tshirtProductPrice");
+        Assert.assertNotEquals(tshirtProductPrice,tshirtCartPrice);
+    }
+
+    public void verifyOnesieProductPriceAndCartPriceNotEqual() {
+        String onesieCartPrice = onesiePriceOnCartPage.textContent();
+        String onesieProductPrice = GlobalVariables.getInstance().getString("onesieProductPrice");
+        Assert.assertNotEquals(onesieProductPrice,onesieCartPrice);
     }
 }

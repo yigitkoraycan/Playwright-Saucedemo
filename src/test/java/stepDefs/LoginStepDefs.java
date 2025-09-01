@@ -43,7 +43,7 @@ public class LoginStepDefs {
     }
 
     @When("I fill username input with {string} and password input with {string}")
-    public void ıEnterValidAnd(String username, String password) {
+    public void i_enter_username_and_password(String username, String password) {
         loginPage.enterUsername(username);
         loginPage.enterPassword(password);
     }
@@ -84,4 +84,8 @@ public class LoginStepDefs {
     }
 
 
+    @Then("I should see error message: Epic sadface: Sorry, this user has been locked out.")
+    public void ıShouldSeeErrorMessageEpicSadfaceSorryThisUserHasBeenLockedOut() {
+        loginPage.verifyErrorMessageLockedOutUser();
+    }
 }

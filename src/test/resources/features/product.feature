@@ -187,7 +187,26 @@ Feature: Product Scenarios
     And I verify products names on cart page
     Then I verify products prices on cart page
 
+    Scenario: Verify t-shirt product price and cart price are not equal
+      Given I login with "visual_user"
+      When I click tshirt add to cart button
+      And I verify t-shirt product price
+      And I click the cart icon
+      Then I verify tshirt product price and cart price are not equal
 
+  Scenario: Verify onesie product price and cart price are not equal
+    Given I login with "visual_user"
+    When I click the Sauce Lab Onesie add to cart button
+    And I verify Sauce Lab Onesie product price
+    And I click the cart icon
+    Then I verify onesie product price and cart price are not equal
+
+
+    Scenario: Verify that Twitter, Facebook and LinkedIn icons are visible in the footer
+      Given I login with "standard_user"
+      When I verify Twitter icon is visible
+      And I verify Facebook icon is visible
+      Then I verify LinkedIn icon is visible
 
 
 

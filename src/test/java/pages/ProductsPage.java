@@ -23,6 +23,9 @@ public class ProductsPage extends BasePage {
     private final Locator backpackTitleOnProductPage;
     private final Locator tshirtTitleOnProductPage;
     private final Locator bikeLightTitleOnProductPage;
+    private final Locator twitterIcon;
+    private final Locator facebookIcon;
+    private final Locator linkedInIcon;
 
 
     public ProductsPage(){
@@ -45,6 +48,9 @@ public class ProductsPage extends BasePage {
         backpackTitleOnProductPage = page.locator(".inventory_item_name:has-text('Sauce Labs Backpack')");
         tshirtTitleOnProductPage = page.locator(".inventory_item_name:has-text('Sauce Labs Bolt T-Shirt')");
         bikeLightTitleOnProductPage =page.locator(".inventory_item_name:has-text('Sauce Labs Bike Light')");
+        twitterIcon = page.locator("#page_wrapper > footer > ul > li.social_twitter > a");
+        facebookIcon = page.locator("#page_wrapper > footer > ul > li.social_facebook > a");
+        linkedInIcon = page.locator("#page_wrapper > footer > ul > li.social_linkedin > a");
 
     }
 
@@ -156,5 +162,20 @@ public class ProductsPage extends BasePage {
         GlobalVariables.getInstance().addString("backpackProductName",backpackTitle);
         String bikeLightTitle = bikeLightTitleOnProductPage.textContent();
         GlobalVariables.getInstance().addString("bikeLightProductName",bikeLightTitle);
+    }
+
+    public void verifyTwitterIconIsVisible() {
+        boolean isTwitterIconVisible = twitterIcon.isVisible();
+        Assert.assertTrue(isTwitterIconVisible);
+    }
+
+    public void verifyFacebookIconIsVisible() {
+        boolean isFacebookIconVisible = facebookIcon.isVisible();
+        Assert.assertTrue(isFacebookIconVisible);
+    }
+
+    public void verifyLinkedInIconIsVisible() {
+        boolean isLinkedInIconIsVisible = linkedInIcon.isVisible();
+        Assert.assertTrue(isLinkedInIconIsVisible);
     }
 }
