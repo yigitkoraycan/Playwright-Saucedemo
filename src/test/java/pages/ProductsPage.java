@@ -26,6 +26,8 @@ public class ProductsPage extends BasePage {
     private final Locator twitterIcon;
     private final Locator facebookIcon;
     private final Locator linkedInIcon;
+    private final Locator productSortContainer;
+    private final Locator resetAppStateButton;
 
 
     public ProductsPage(){
@@ -51,6 +53,8 @@ public class ProductsPage extends BasePage {
         twitterIcon = page.locator("#page_wrapper > footer > ul > li.social_twitter > a");
         facebookIcon = page.locator("#page_wrapper > footer > ul > li.social_facebook > a");
         linkedInIcon = page.locator("#page_wrapper > footer > ul > li.social_linkedin > a");
+        productSortContainer = page.locator(".product_sort_container");
+        resetAppStateButton = page.locator("#reset_sidebar_link");
 
     }
 
@@ -175,7 +179,26 @@ public class ProductsPage extends BasePage {
     }
 
     public void verifyLinkedInIconIsVisible() {
-        boolean isLinkedInIconIsVisible = linkedInIcon.isVisible();
-        Assert.assertTrue(isLinkedInIconIsVisible);
+        boolean isLinkedInIconVisible = linkedInIcon.isVisible();
+        Assert.assertTrue(isLinkedInIconVisible);
+    }
+
+    public void verifyProductSortContainerIsVisible() {
+        boolean isProductSortContainerVisible = productSortContainer.isVisible();
+        Assert.assertTrue(isProductSortContainerVisible);
+    }
+
+    public void clickTheResetAppStateButton() {
+        resetAppStateButton.click();
+    }
+
+    public void shouldSeeTheCartQuantityNumberIs(String cartQuantity) {
+        Assert.assertEquals(cartQuantity,cartIcon.textContent());
+
+    }
+
+
+    public void shouldSeeCartQuantityIsEmpty() {
+        Assert.assertEquals("Cart should be empty","", cartIcon.textContent());
     }
 }

@@ -30,6 +30,10 @@ Feature: Login functionally on saucedemo
             And I click the login button
             Then I should see error message: Epic sadface: Sorry, this user has been locked out.
 
+  Scenario: Verify login credentials and password sections on login page
+    Given I am on the login page
+    When I verify login credentials section
+    Then I verify login password section
 
 
 

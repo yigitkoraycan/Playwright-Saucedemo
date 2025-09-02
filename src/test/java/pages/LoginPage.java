@@ -12,6 +12,8 @@ public class LoginPage extends BasePage {
     private final Locator productsTitle;
     private final Locator loginLogo;
     private final Locator errorMessage;
+    private final Locator loginCredentialsSection;
+    private final Locator loginPasswordSection;
     // Products sayfası için başlık elementi class ile tanımladı .
     // private final String usernameInput = "//*[@id='user-name']"; xpath ile tanımlama
     // private final Locator usernameInput = page.locator("#user-name"); locator tanımlama çalışmadı
@@ -22,6 +24,8 @@ public class LoginPage extends BasePage {
     productsTitle = page.locator(".title");
     loginLogo = page.locator(".login_logo");
     errorMessage= page.locator("h3[data-test='error']");
+    loginCredentialsSection = page.locator(".login_credentials");
+    loginPasswordSection = page.locator(".login_password");
 
 
     }
@@ -78,5 +82,16 @@ public class LoginPage extends BasePage {
     }
 
 
+    public void verifyLoginCredentialsSection() {
+        boolean isLoginCredentialsSectionVisible = loginCredentialsSection.isVisible();
+        Assert.assertTrue(isLoginCredentialsSectionVisible);
+
+
+    }
+
+    public void verifyLoginPasswordSection() {
+        boolean isLoginPasswordSectionVisible = loginPasswordSection.isVisible();
+        Assert.assertTrue(isLoginPasswordSectionVisible);
+    }
 }
 

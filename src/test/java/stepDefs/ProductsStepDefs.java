@@ -140,4 +140,28 @@ public class ProductsStepDefs {
     public void i_verify_linkedin_icon_is_visible() {
         productsPage.verifyLinkedInIconIsVisible();
     }
+
+    @Then("I verify product sort container is visible")
+    public void i_verify_product_sort_container_is_visible() {
+        productsPage.verifyProductSortContainerIsVisible();
+    }
+
+    @And("I click the Reset App State Button")
+    public void i_click_the_reset_app_state_button() {
+        productsPage.clickTheResetAppStateButton();
+    }
+
+
+    @Then("I should see the cart quantity number is {string}")
+    public void i_should_see_the_cart_quantity_number_is(String cartQuantity) {
+        productsPage.shouldSeeTheCartQuantityNumberIs(cartQuantity);
+    }
+
+
+
+
+    @Then("I should see cart quantity is empty")
+    public void i_should_see_cart_quantity_is_empty() {
+        productsPage.shouldSeeCartQuantityIsEmpty();
+    }
 }

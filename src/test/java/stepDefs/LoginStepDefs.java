@@ -88,4 +88,14 @@ public class LoginStepDefs {
     public void ıShouldSeeErrorMessageEpicSadfaceSorryThisUserHasBeenLockedOut() {
         loginPage.verifyErrorMessageLockedOutUser();
     }
+
+    @When("I verify login credentials section")
+    public void i_verify_login_credentials_section() {
+        loginPage.verifyLoginCredentialsSection();
+    }
+
+    @Then("I verify login password section")
+    public void i_verify_login_password_section() {
+        loginPage.verifyLoginPasswordSection();
+    }
 }

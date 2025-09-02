@@ -208,6 +208,30 @@ Feature: Product Scenarios
       And I verify Facebook icon is visible
       Then I verify LinkedIn icon is visible
 
+  Scenario: Verify product sort container is visible
+    Given I login with "standard_user"
+    Then I verify product sort container is visible
+
+  Scenario: Verify Reset App State button clears the cart
+    Given I login with "standard_user"
+    When I click tshirt add to cart button
+    And I click backpack add to cart button
+    And I click bike light add to cart button
+    And I click the menu icon
+    And I click the Reset App State Button
+    Then I should see the cart quantity number is ""
+
+  Scenario: Verify Reset App State button does not fail
+    Given I login with "standard_user"
+    When I click tshirt add to cart button
+    And I click backpack add to cart button
+    And I click bike light add to cart button
+    And I click the menu icon
+    And I click the Reset App State Button
+    Then I should see cart quantity is empty
+
+    Scenario:
+
 
 
 
