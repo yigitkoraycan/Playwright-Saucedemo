@@ -67,4 +67,20 @@ public class CartStepDefs {
     public void i_verify_onesie_product_price_and_cart_price_are_not_equal() {
         cartPage.verifyOnesieProductPriceAndCartPriceNotEqual();
     }
+
+    @Then("I should still see the products in the cart")
+    public void i_should_still_see_the_products_in_the_cart() {
+        cartPage.verifyStillSeeTheProductsInTheCart();
+    }
+
+
+    @Then("Verify cart page is visible")
+    public void i_verify_cart_page_is_visible() {
+        cartPage.verifyCartPageIsVisible();
+    }
+
+    @Then("Verify that clicking the cancel button returns to the cart page")
+    public void i_verify_that_clicking_the_cancel_button_returns_to_the_cart_page() {
+        cartPage.verifyReturnsToTheCarPage();
+    }
 }

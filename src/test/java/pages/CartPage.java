@@ -14,6 +14,8 @@ public class CartPage extends BasePage {
     private final Locator backpackTitleOnCartPage;
     private final Locator tshirtTitleOnCartPage;
     private final Locator onesiePriceOnCartPage;
+    private final Locator onesieTitleOnCartPage;
+
 
 
 
@@ -30,6 +32,8 @@ public class CartPage extends BasePage {
         tshirtTitleOnCartPage = page.locator("div.cart_item:has-text('Sauce Labs Bolt T-Shirt') .inventory_item_name");
         bikeLightTitleOnCartPage = page.locator("div.cart_item:has-text('Sauce Labs Bike Light') .inventory_item_name");
         onesiePriceOnCartPage = page.locator("div.cart_item:has-text('Sauce Labs Onesie') .inventory_item_price");
+        onesieTitleOnCartPage = page.locator("div.cart_item:has-text('Sauce Labs Onesie') .inventory_item_name");
+
     }
 
 
@@ -102,5 +106,22 @@ public class CartPage extends BasePage {
         String onesieCartPrice = onesiePriceOnCartPage.textContent();
         String onesieProductPrice = GlobalVariables.getInstance().getString("onesieProductPrice");
         Assert.assertNotEquals(onesieProductPrice,onesieCartPrice);
+    }
+
+    public void verifyStillSeeTheProductsInTheCart() {
+        Assert.assertEquals("Sauce Labs Backpack",backpackTitleOnCartPage.textContent());
+        Assert.assertEquals("Sauce Labs Bike Light",bikeLightTitleOnCartPage.textContent());
+        Assert.assertEquals("Sauce Labs Onesie",onesieTitleOnCartPage.textContent());
+    }
+
+
+    public void verifyCartPageIsVisible() {
+        boolean cartPageIsVisible = cartPageTitle.isVisible();
+        Assert.assertTrue(cartPageIsVisible);
+    }
+
+    public void verifyReturnsToTheCarPage() {
+        Assert.assertEquals("Your Cart",cartPageTitle.textContent());
+
     }
 }

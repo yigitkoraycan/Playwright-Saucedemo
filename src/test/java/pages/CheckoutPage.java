@@ -1,6 +1,5 @@
 package pages;
 import com.microsoft.playwright.Locator;
-import com.microsoft.playwright.Page;
 import org.junit.Assert;
 
 public class CheckoutPage extends BasePage {
@@ -10,6 +9,9 @@ public class CheckoutPage extends BasePage {
     private final Locator continueButton;
     private final Locator cancelButton;
     private final Locator checkoutInformationTitle;
+    private final Locator errorMessage;
+
+
     public CheckoutPage(){
         firstNameInput = page.locator("#first-name");
         lastNameInput = page.locator("#last-name");
@@ -17,6 +19,7 @@ public class CheckoutPage extends BasePage {
         continueButton = page.locator("#continue");
         cancelButton = page.locator("#cancel");
         checkoutInformationTitle = page.locator(".title");
+        errorMessage = page.locator("h3[data-test='error']");
 
     }
 
@@ -49,5 +52,44 @@ public class CheckoutPage extends BasePage {
     public void verifyContinueButtonIsVisible() {
         boolean isContinueButtonVisible = continueButton.isVisible();
         Assert.assertTrue(isContinueButtonVisible);
+    }
+
+    public void verifyFirstNameInputIsVisible() {
+        boolean isFirstNameInputVisible = firstNameInput.isVisible();
+        Assert.assertTrue(isFirstNameInputVisible);
+    }
+
+    public void verifyLastNameInputIsVisible() {
+        boolean isLastNameInputVisible = lastNameInput.isVisible();
+        Assert.assertTrue(isLastNameInputVisible);
+
+    }
+
+    public void verifyPostalCodeInputIsVisible() {
+        boolean isPostalCodeInputVisible = postalCodeInput.isVisible();
+        Assert.assertTrue(isPostalCodeInputVisible);
+    }
+
+
+    public void verifyErrorMessageFirstNameIsRequired() {
+        Assert.assertEquals("Error: First Name is required",errorMessage.textContent());
+    }
+
+    public void verifyErrorMessageLastNameIsRequired() {
+        Assert.assertEquals("Error: Last Name is required",errorMessage.textContent());
+    }
+
+    public void verifyErrorMessagePostalCodeIsRequired() {
+        Assert.assertEquals("Error: Postal Code is required",errorMessage.textContent());
+    }
+
+    public void clickTheCancelButton() {
+        cancelButton.click();
+    }
+
+    public void verifyShouldNotAbleToSeeCheckoutPage() {
+        boolean isCheckoutPageVisible = checkoutInformationTitle.isVisible();
+        Assert.assertFalse("Checkout page should not be visible", isCheckoutPageVisible);
+
     }
 }

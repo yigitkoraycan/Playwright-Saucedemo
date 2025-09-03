@@ -164,4 +164,19 @@ public class ProductsStepDefs {
     public void i_should_see_cart_quantity_is_empty() {
         productsPage.shouldSeeCartQuantityIsEmpty();
     }
+
+    @And("I click backpack remove button")
+    public void i_click_backpack_remove_button() {
+        productsPage.clickBackPackRemoveButton();
+    }
+
+    @And("I click bike light remove button")
+    public void i_click_bike_light_remove_button() {
+        productsPage.clickBikeLightRemoveButton();
+    }
+
+    @And("I click onesie remove button")
+    public void i_click_onesie_remove_button() {
+        productsPage.clickOnesieRemoveButton();
+    }
 }

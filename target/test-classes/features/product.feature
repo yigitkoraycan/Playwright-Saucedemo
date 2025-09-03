@@ -230,7 +230,88 @@ Feature: Product Scenarios
     And I click the Reset App State Button
     Then I should see cart quantity is empty
 
-    Scenario:
+  Scenario: Verify Remove button does not work after adding a product
+    Given I login with "error_user"
+    When I click backpack add to cart button
+    And I click bike light add to cart button
+    And I click the Sauce Lab Onesie add to cart button
+    And I click the cart icon
+    Then I should still see the products in the cart
+
+  Scenario: Verify Remove button does not work after adding a product
+    # Ürünler sepetten çıkarılamadığından otomasyon hata verecek
+    Given I login with "error_user"
+    When I click backpack add to cart button
+    And I click bike light add to cart button
+    And I click the Sauce Lab Onesie add to cart button
+    And I click backpack remove button
+    And I click bike light remove button
+    And I click onesie remove button
+    And I click the cart icon
+    Then I should see the cart quantity number is ""
+
+  Scenario: Verify First Name, Last Name and Postal Code input fields are visible and can be filled
+      Given I login with "standard_user"
+      When I click the cart icon
+      And I click the checkout button
+      And I verify first name input is visible
+      And I verify last name input is visible
+      And I verify postal code input is visible
+      And fill your firstname with "koray"
+      And fill your lastname with "can"
+      Then fill your postalcode with "123"
+
+    Scenario: Product page is visible when login error user
+      Given I login with "error_user"
+      When I click the cart icon
+      Then Verify cart page is visible
+
+  Scenario: Verify the error message that appears when first name is not entered on the information page
+    Given I login with "standard_user"
+    When I click the cart icon
+    And I click the checkout button
+    And fill your firstname with ""
+    And fill your lastname with "can"
+    And fill your postalcode with "123"
+    And I click the continue button
+    Then I should see error message: Error: First Name is required
+
+  Scenario: Verify the error message that appears when last name is not entered on the information page
+    Given I login with "standard_user"
+    When I click the cart icon
+    And I click the checkout button
+    And fill your firstname with "koray"
+    And fill your lastname with ""
+    And fill your postalcode with "123"
+    And I click the continue button
+    Then I should see error message: Error: Last Name is required
+
+  Scenario: Verify the error message that appears when postal code is not entered on the information page
+    Given I login with "standard_user"
+    When I click the cart icon
+    And I click the checkout button
+    And fill your firstname with "koray"
+    And fill your lastname with "can"
+    And fill your postalcode with ""
+    And I click the continue button
+    Then I should see error message: Error: Postal Code is required
+
+    Scenario: Verify that the cart page opens when you click the cancel button on the information page
+      Given I login with "standard_user"
+      When I click the cart icon
+      And I click the checkout button
+      And I click the cancel button
+      Then Verify that clicking the cancel button returns to the cart page
+
+      Scenario: When there are no items in the cart, clicking the Checkout button should result in an error
+        Given I login with "standard_user"
+        When I click the cart icon
+        And I click the checkout button
+        Then I should not able to see checkout page
+
+
+
+
 
 
 

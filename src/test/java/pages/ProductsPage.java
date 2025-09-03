@@ -28,6 +28,9 @@ public class ProductsPage extends BasePage {
     private final Locator linkedInIcon;
     private final Locator productSortContainer;
     private final Locator resetAppStateButton;
+    private final Locator backpackRemoveButton;
+    private final Locator bikeLightRemoveButton;
+    private final Locator onesieRemoveButton;
 
 
     public ProductsPage(){
@@ -55,6 +58,9 @@ public class ProductsPage extends BasePage {
         linkedInIcon = page.locator("#page_wrapper > footer > ul > li.social_linkedin > a");
         productSortContainer = page.locator(".product_sort_container");
         resetAppStateButton = page.locator("#reset_sidebar_link");
+        backpackRemoveButton = page.locator("#remove-sauce-labs-backpack");
+        bikeLightRemoveButton = page.locator("#remove-sauce-labs-bike-light");
+        onesieRemoveButton = page.locator("#remove-sauce-labs-onesie");
 
     }
 
@@ -200,5 +206,17 @@ public class ProductsPage extends BasePage {
 
     public void shouldSeeCartQuantityIsEmpty() {
         Assert.assertEquals("Cart should be empty","", cartIcon.textContent());
+    }
+
+    public void clickBackPackRemoveButton() {
+        backpackRemoveButton.click();
+    }
+
+    public void clickBikeLightRemoveButton() {
+        bikeLightRemoveButton.click();
+    }
+
+    public void clickOnesieRemoveButton() {
+        onesieRemoveButton.click();
     }
 }
