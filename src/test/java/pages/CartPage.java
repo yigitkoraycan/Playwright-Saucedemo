@@ -15,6 +15,9 @@ public class CartPage extends BasePage {
     private final Locator tshirtTitleOnCartPage;
     private final Locator onesiePriceOnCartPage;
     private final Locator onesieTitleOnCartPage;
+    private final Locator tshirtRemoveButton;
+    private final Locator backpackRemoveButton;
+
 
 
 
@@ -33,6 +36,8 @@ public class CartPage extends BasePage {
         bikeLightTitleOnCartPage = page.locator("div.cart_item:has-text('Sauce Labs Bike Light') .inventory_item_name");
         onesiePriceOnCartPage = page.locator("div.cart_item:has-text('Sauce Labs Onesie') .inventory_item_price");
         onesieTitleOnCartPage = page.locator("div.cart_item:has-text('Sauce Labs Onesie') .inventory_item_name");
+        tshirtRemoveButton = page.locator("#remove-sauce-labs-bolt-t-shirt");
+        backpackRemoveButton = page.locator("#remove-sauce-labs-backpack");
 
     }
 
@@ -122,6 +127,19 @@ public class CartPage extends BasePage {
 
     public void verifyReturnsToTheCarPage() {
         Assert.assertEquals("Your Cart",cartPageTitle.textContent());
+
+    }
+
+    public void clickTshirtRemoveButtonOnCartPage() {
+        tshirtRemoveButton.click();
+    }
+
+    public void clickBackpackRemoveButtonOnCartPage() {
+        backpackRemoveButton.click();
+    }
+
+    public void clickContinueShoppingButton() {
+        continueShoppingButton.click();
 
     }
 }

@@ -46,4 +46,25 @@ public class CheckoutOverviewStepDefs {
     public void i_verify_product_description() {
         checkoutOverviewPage.verifyProductDescription();
     }
+
+    @And("I click the cancel button on checkout overview page")
+    public void i_click_the_cancel_button_on_checkout_overview_page() {
+        checkoutOverviewPage.clickTheCancelButton();
+    }
+
+
+    @Then("I should not able to see checkout overview page")
+    public void i_should_not_able_to_see_checkout_overview_page() {
+        checkoutOverviewPage.shouldNotSeeCheckoutOverviewPage();
+    }
+
+    @Then("I should be able too see checkout overview page")
+    public void i_should_able_to_see_checkout_overview_page() {
+        checkoutOverviewPage.shouldSeeCheckoutOverviewPage();
+    }
+
+    @Then("I verify shipping information")
+    public void i_verify_shipping_information() {
+        checkoutOverviewPage.verifyShippingInformation();
+    }
 }

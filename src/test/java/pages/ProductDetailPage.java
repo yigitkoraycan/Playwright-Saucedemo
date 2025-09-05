@@ -5,18 +5,18 @@ import utils.GlobalVariables;
 
 
 public class ProductDetailPage extends BasePage {
-    private final Locator addToCartButtonInDetailPage;
-    private final Locator removeButtonInDetailPage;
-    private final Locator onesiePriceInDetailPage;
+    private final Locator addToCartButton;
+    private final Locator removeButton;
+    private final Locator onesiePriceOnDetailPage;
     private final Locator cartIcon;
     private final Locator backToProductsButton;
 
 
     public ProductDetailPage(){
-        addToCartButtonInDetailPage = page.locator("#add-to-cart");
-        removeButtonInDetailPage = page.locator("#remove");
+        addToCartButton = page.locator("#add-to-cart");
+        removeButton = page.locator("#remove");
 
-        onesiePriceInDetailPage = page.locator(".inventory_details_price");
+        onesiePriceOnDetailPage = page.locator(".inventory_details_price");
         cartIcon = page.locator(".shopping_cart_link");
         backToProductsButton = page.locator("#back-to-products");
 
@@ -28,29 +28,29 @@ public class ProductDetailPage extends BasePage {
     }
 
     public void clickTheAddToCartButtonInProductDetailPage() {
-        addToCartButtonInDetailPage.click();
+        addToCartButton.click();
     }
 
     public void shouldSeeRemoveButtonOnDetailPage() {
-        boolean isRemoveVisible = removeButtonInDetailPage.isVisible();
+        boolean isRemoveVisible = removeButton.isVisible();
         Assert.assertTrue(isRemoveVisible);
     }
 
 
 
     public void verifySauceLabOnesieProductPriceInDetailPage() {
-        String productDetailPagePrice = onesiePriceInDetailPage.textContent();
+        String productDetailPagePrice = onesiePriceOnDetailPage.textContent();
         String productPagePrice = GlobalVariables.getInstance().getString("onesieProductPrice");
         Assert.assertEquals(productDetailPagePrice,productPagePrice);
     }
 
     public void clickTheAddToCartButtonOnDetailPage() {
-        addToCartButtonInDetailPage.click();
+        addToCartButton.click();
     }
 
 
     public void clickTheRemoveButtonOnDetailPage() {
-        removeButtonInDetailPage.click();
+        removeButton.click();
     }
 
     public void shouldSeeTheCartIconNotDisplayAQuantityNumber() {
@@ -59,6 +59,14 @@ public class ProductDetailPage extends BasePage {
 
     public void verifyTheProductDetailPageIsOpened() {
         Assert.assertEquals("Back to products",backToProductsButton.textContent());
+    }
+
+    public void clickRemoveButton() {
+        removeButton.click();
+    }
+
+    public void clickBackToProductsButton() {
+        backToProductsButton.click();
     }
 }
 

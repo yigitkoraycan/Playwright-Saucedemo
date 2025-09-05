@@ -1,15 +1,26 @@
 package pages;
 import com.microsoft.playwright.Locator;
-import com.microsoft.playwright.Page;
+
+import org.junit.Assert;
 
 public class CheckoutCompletePage extends BasePage {
 
     private final Locator completeText;
+    private final Locator backHomeButton;
+
+
+
     public CheckoutCompletePage(){
-        completeText = page.locator("div.complete-text");
-    }
-    public boolean isCompleteTextVisible(){
-        return completeText.isVisible();
+       completeText = page.locator(".complete-text");
+        backHomeButton = page.locator("#back-to-products");
     }
 
+
+    public void shouldSeeTheCompleteText() {
+        Assert.assertEquals("Your order has been dispatched, and will arrive just as fast as the pony can get there!",completeText.textContent());
+    }
+
+    public void clickBackHomeButton() {
+        backHomeButton.click();
+    }
 }

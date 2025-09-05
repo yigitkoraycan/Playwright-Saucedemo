@@ -1,7 +1,5 @@
 package pages;
 import com.microsoft.playwright.Locator;
-import com.microsoft.playwright.Page;
-import io.cucumber.java.eo.Do;
 import org.junit.Assert;
 import utils.GlobalVariables;
 
@@ -13,6 +11,9 @@ public class CheckoutOverviewPage extends BasePage {
     private final Locator itemTotalPrice;
     private final Locator taxValue;
     private final Locator backpackItemDescription;
+    private final Locator cancelButton;
+    private final Locator shippingInformation;
+
 
     public CheckoutOverviewPage(){
         finishButton = page.locator("#finish");
@@ -21,6 +22,8 @@ public class CheckoutOverviewPage extends BasePage {
         itemTotalPrice = page.locator(".summary_subtotal_label");
         taxValue = page.locator(".summary_tax_label");
         backpackItemDescription = page.locator(".inventory_item_desc");
+        cancelButton = page.locator("#cancel");
+        shippingInformation= page.locator("div[data-test='shipping-info-value']");
 
     }
 
@@ -65,5 +68,21 @@ public class CheckoutOverviewPage extends BasePage {
     public void verifyProductDescription() {
         Assert.assertEquals("carry.allTheThings() with the sleek, streamlined Sly Pack that melds uncompromising style with unequaled laptop and tablet protection.",backpackItemDescription.textContent());
 
+    }
+
+    public void clickTheCancelButton() {
+        cancelButton.click();
+    }
+
+    public void shouldNotSeeCheckoutOverviewPage() {
+        Assert.assertFalse("Checkout Overivew Page not visible",checkoutOverviewTitle.isVisible());
+    }
+
+    public void shouldSeeCheckoutOverviewPage() {
+        Assert.assertTrue("Checkout Overivew Page not visible",checkoutOverviewTitle.isVisible());
+    }
+
+    public void verifyShippingInformation() {
+        Assert.assertEquals("Free Pony Express Delivery!",shippingInformation.textContent());
     }
 }

@@ -56,4 +56,14 @@ public class ProductDetailStepDefs {
     public void i_verify_the_product_detail_page_is_opened() {
         productDetailPage.verifyTheProductDetailPageIsOpened();
     }
+
+    @And("I click remove button on detail page")
+    public void i_click_remove_button_on_detail_page() {
+        productDetailPage.clickRemoveButton();
+    }
+
+    @And("I click back to products button")
+    public void i_click_back_to_products_button() {
+        productDetailPage.clickBackToProductsButton();
+    }
 }

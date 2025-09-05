@@ -304,10 +304,90 @@ Feature: Product Scenarios
       Then Verify that clicking the cancel button returns to the cart page
 
       Scenario: When there are no items in the cart, clicking the Checkout button should result in an error
+        # Checkout page'e giderken hata almayacağımızdan dolayı otomasyon hata verecek
         Given I login with "standard_user"
         When I click the cart icon
         And I click the checkout button
         Then I should not able to see checkout page
+        
+        Scenario: Verify that the t-shirt and backpack products removed from the cart page have also been removed from the product page.
+          Given I login with "standard_user"
+          When  I click tshirt add to cart button
+          And I click backpack add to cart button
+          And I click the cart icon
+          And I click tshirt remove button on cart page
+          And I click backpack remove button on cart page
+          And I click Continue Shopping button
+          Then I verify products are removed on product page
+
+          Scenario: Verify that the t-shirt and backpack products removed from the detail page have also been removed from the product page.
+            Given I login with "standard_user"
+            When I click tshirt add to cart button
+            And I click the t-shirt product
+            And I verify product detail page is opened
+            And I click remove button on detail page
+            And I click back to products button
+            Then I verify tshirt product is removed on product page
+
+            Scenario: Verify that cancel button on checkout overview returns to products page
+              Given I login with "standard_user"
+              When I click the cart icon
+              And I click the checkout button
+              And fill your firstname with "koray"
+              And fill your lastname with "can"
+              And fill your postalcode with "123"
+              And I click the continue button
+              And I click the cancel button on checkout overview page
+              Then I verify that clicking the cancel button returns to the products page
+
+              Scenario: User should not access Checkout Overview Page with invalid postal code
+                # Checkout Overview Page'e giderken hata almayacağımızdan dolayı otomasyon hata verecek
+                Given I login with "standard_user"
+                When I click the cart icon
+                And I click the checkout button
+                And fill your firstname with "koray"
+                And fill your lastname with "can"
+                And fill your postalcode with "abc"
+                Then I should not able to see checkout overview page
+
+                Scenario: User should be able to proceed to Checkout Overview Page with valid information
+                  Given I login with "standard_user"
+                  When I click the cart icon
+                  And I click the checkout button
+                  And fill your firstname with "koray"
+                  And fill your lastname with "can"
+                  And fill your postalcode with "123"
+                  Then I should be able too see checkout overview page
+
+  Scenario: Verify shipping information on checkout overview page
+    Given I login with "standard_user"
+    When I click the cart icon
+    And I click the checkout button
+    And fill your firstname with "koray"
+    And fill your lastname with "can"
+    And fill your postalcode with "123"
+    And I click the continue button
+    Then I verify shipping information
+
+    Scenario: asdf
+      Given I login with "standard_user"
+      When I click backpack add to cart button
+      And I click the cart icon
+      And I click the checkout button
+      And fill your firstname with "koray"
+      And fill your lastname with "can"
+      And fill your postalcode with "123"
+      And I click the continue button
+      And I click the finish button
+      And I click Back Home button
+      Then I verify that clicking Back Home button returns to Products Page
+
+
+
+
+
+
+
 
 
 

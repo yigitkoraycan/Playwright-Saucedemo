@@ -179,4 +179,24 @@ public class ProductsStepDefs {
     public void i_click_onesie_remove_button() {
         productsPage.clickOnesieRemoveButton();
     }
+
+    @Then("I verify products are removed on product page")
+    public void i_verify_products_are_removed_on_product_page() {
+        productsPage.verifyProductsAreRemoved();
+    }
+
+    @Then("I verify tshirt product is removed on product page")
+    public void i_verify_tshirt_product_is_removed_on_product_page() {
+        productsPage.verifyTshirtProductIsRemovedOnProductPage();
+    }
+
+    @Then("I verify that clicking the cancel button returns to the products page")
+    public void i_verify_that_clicking_the_cancel_button_returns_to_the_products_page() {
+        productsPage.verifyReturnsToProductPage();
+    }
+
+    @Then("I verify that clicking Back Home button returns to Products Page")
+    public void i_verify_that_clicking_back_home_button_returns_to_products_page() {
+        productsPage.verifyReturnsToProductPage();
+    }
 }

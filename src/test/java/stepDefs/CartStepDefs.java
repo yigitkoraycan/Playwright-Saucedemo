@@ -83,4 +83,19 @@ public class CartStepDefs {
     public void i_verify_that_clicking_the_cancel_button_returns_to_the_cart_page() {
         cartPage.verifyReturnsToTheCarPage();
     }
+
+    @And("I click tshirt remove button on cart page")
+    public void i_click_the_tshirt_remove_button_on_cart_page() {
+        cartPage.clickTshirtRemoveButtonOnCartPage();
+    }
+
+    @And("I click backpack remove button on cart page")
+    public void i_click_the_backpack_remove_button_on_cart_page() {
+        cartPage.clickBackpackRemoveButtonOnCartPage();
+    }
+
+    @And("I click Continue Shopping button")
+    public void i_click_continue_shopping_button() {
+        cartPage.clickContinueShoppingButton();
+    }
 }

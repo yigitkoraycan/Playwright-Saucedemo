@@ -219,4 +219,17 @@ public class ProductsPage extends BasePage {
     public void clickOnesieRemoveButton() {
         onesieRemoveButton.click();
     }
+
+    public void verifyProductsAreRemoved() {
+        Assert.assertEquals("Add to cart",tshirtAddToCartButton.textContent());
+        Assert.assertEquals("Add to cart",backPackAddToCartButton.textContent());
+    }
+
+    public void verifyTshirtProductIsRemovedOnProductPage() {
+        Assert.assertEquals("Add to cart",tshirtAddToCartButton.textContent());
+    }
+
+    public void verifyReturnsToProductPage() {
+        Assert.assertEquals("Products", productsTitle.textContent());
+    }
 }

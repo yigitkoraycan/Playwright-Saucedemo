@@ -1,5 +1,6 @@
 package stepDefs;
 
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import pages.CheckoutCompletePage;
 import static org.junit.Assert.assertTrue;
@@ -13,6 +14,12 @@ public class CheckoutCompleteStepDefs {
 
     @Then("I should see the complete text")
     public void i_should_see_the_complete_text() {
-        assertTrue("Complete text is not visible!", checkoutCompletePage.isCompleteTextVisible());
+        checkoutCompletePage.shouldSeeTheCompleteText();
+    }
+
+
+    @And("I click Back Home button")
+    public void i_click_back_home_button() {
+        checkoutCompletePage.clickBackHomeButton();
     }
 }
