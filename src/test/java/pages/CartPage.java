@@ -17,6 +17,9 @@ public class CartPage extends BasePage {
     private final Locator onesieTitleOnCartPage;
     private final Locator tshirtRemoveButton;
     private final Locator backpackRemoveButton;
+    private final Locator addToCartButton;
+    private final Locator jacketTitleOnCartPage;
+    private final Locator testAllTheThingsTshirtTitleOnCartPage;
 
 
 
@@ -38,6 +41,9 @@ public class CartPage extends BasePage {
         onesieTitleOnCartPage = page.locator("div.cart_item:has-text('Sauce Labs Onesie') .inventory_item_name");
         tshirtRemoveButton = page.locator("#remove-sauce-labs-bolt-t-shirt");
         backpackRemoveButton = page.locator("#remove-sauce-labs-backpack");
+        addToCartButton = page.locator("#add-to-cart");
+        jacketTitleOnCartPage =  page.locator("div.cart_item:has-text('Sauce Labs Fleece Jacket') .inventory_item_name");
+        testAllTheThingsTshirtTitleOnCartPage = page.locator("div.cart_item:has-text('Test.allTheThings() T-Shirt (Red)') .inventory_item_name");
 
     }
 
@@ -141,5 +147,23 @@ public class CartPage extends BasePage {
     public void clickContinueShoppingButton() {
         continueShoppingButton.click();
 
+    }
+
+    public void verifyBikeLightProductAddedToCart() {
+        Assert.assertEquals("Sauce Labs Bike Light",bikeLightTitleOnCartPage.textContent());
+    }
+
+    public void clickBikeLightAddToCartButtonOnDetailPage() {
+        addToCartButton.click();
+
+    }
+
+    public void shouldSeeAllProductsOnCartPage() {
+        Assert.assertEquals("Sauce Labs Backpack",backpackTitleOnCartPage.textContent());
+        Assert.assertEquals("Sauce Labs Bike Light",bikeLightTitleOnCartPage.textContent());
+        Assert.assertEquals("Sauce Labs Bolt T-Shirt",tshirtTitleOnCartPage.textContent());
+        Assert.assertEquals("Sauce Labs Fleece Jacket",jacketTitleOnCartPage.textContent());
+        Assert.assertEquals("Sauce Labs Onesie",onesieTitleOnCartPage.textContent());
+        Assert.assertEquals("Test.allTheThings() T-Shirt (Red)",testAllTheThingsTshirtTitleOnCartPage.textContent());
     }
 }

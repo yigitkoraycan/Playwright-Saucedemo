@@ -22,4 +22,8 @@ public class CheckoutCompleteStepDefs {
     public void i_click_back_home_button() {
         checkoutCompletePage.clickBackHomeButton();
     }
+
+    @And("I verify checkout complete page is opened")
+    public void i_verify_checkout_complete_page_is_opened() {checkoutCompletePage.verifyCheckoutCompletePageIsOpened();
+    }
 }

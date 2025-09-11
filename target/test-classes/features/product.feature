@@ -5,7 +5,7 @@ Feature: Product Scenarios
 
   Scenario: User can add Sauce Labs Bolt T-Shirt to cart and placing order
     Given I login with "standard_user"
-    When I add the "Sauce Labs Bolt T-Shirt" to the cart
+    When I click tshirt add to cart button
     And I go to the cart page
     And I verify cart page is opened
     And I click the checkout button
@@ -369,7 +369,7 @@ Feature: Product Scenarios
     And I click the continue button
     Then I verify shipping information
 
-    Scenario: asdf
+    Scenario: User should be redirected to Products Page after clicking Back Home button
       Given I login with "standard_user"
       When I click backpack add to cart button
       And I click the cart icon
@@ -380,7 +380,89 @@ Feature: Product Scenarios
       And I click the continue button
       And I click the finish button
       And I click Back Home button
-      Then I verify that clicking Back Home button returns to Products Page
+      Then I verify that Products Page is opened
+
+  Scenario: Verify Bike Light Product Added to Cart from Product Page
+    Given I login with "standard_user"
+    When I click bike light product
+    And I verify product detail page is opened
+    And I click add to cart button in product detail page
+    And I click the cart icon
+    And I verify cart page is opened
+    Then I verify bike light product added to cart
+
+
+  Scenario: Verify Products Remain in Cart After Continue Shopping
+    Given I login with "standard_user"
+    When I click tshirt add to cart button
+    And I click backpack add to cart button
+    And I click the cart icon
+    And I verify cart page is opened
+    And I click Continue Shopping button
+    And I should see "Remove" button for Sauce Labs Bolt T-Shirt
+    Then I should see "Remove" button for Sauce Labs Backpack
+
+
+    Scenario: Verify all products are visible in the cart after being added from their detail pages
+      Given I login with "standard_user"
+      When I click the backpack product
+      And I verify product detail page is opened
+      And I click add to cart button in product detail page
+      And I click back to products button
+      And I click bike light product
+      And I verify product detail page is opened
+      And I click add to cart button in product detail page
+      And I click back to products button
+      And I click the t-shirt product
+      And I verify product detail page is opened
+      And I click bike light add to cart button on detail page
+      And I click back to products button
+      And I click jacket product
+      And I verify product detail page is opened
+      And I click add to cart button in product detail page
+      And I click back to products button
+      And I click the Sauce Lab Onesie product
+      And I verify product detail page is opened
+      And I click add to cart button in product detail page
+      And I click back to products button
+      And I click test all things tshirt product
+      And I verify product detail page is opened
+      And I click add to cart button in product detail page
+      And I click back to products button
+      And I click the cart icon
+      And I verify cart page is opened
+      Then I should see all products on cart page
+
+  Scenario: Verify Products Remain in Cart After Continue Shopping with error user with error user
+    # tshirt add to cart butonu çalışmadığından otomasyon hata verecektir
+    Given I login with "error_user"
+    When I click tshirt add to cart button
+    And I click backpack add to cart button
+    And I click the cart icon
+    And I verify cart page is opened
+    And I click Continue Shopping button
+    And I should see "Remove" button for Sauce Labs Bolt T-Shirt
+    Then I should see "Remove" button for Sauce Labs Backpack
+
+  Scenario: Verify product button resets to "Add to cart" after completing purchase
+    Given I login with "standard_user"
+    When I click the Sauce Lab Onesie add to cart button
+    And I click the jacket add to cart button
+    And I click the cart icon
+    And I verify cart page is opened
+    And I click the checkout button
+    And I verify checkout information page is opened
+    And fill your firstname with "koray"
+    And fill your lastname with "can"
+    And fill your postalcode with "123"
+    And I click the continue button
+    And I verify checkout overview page is opened
+    And I click the finish button
+    And I verify checkout complete page is opened
+    And I click Back Home button
+    And I verify that Products Page is opened
+    Then I should see "Add to cart" button for Sauce Labs Onesie
+
 
 
 

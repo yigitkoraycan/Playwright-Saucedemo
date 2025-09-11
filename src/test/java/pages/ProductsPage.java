@@ -31,6 +31,10 @@ public class ProductsPage extends BasePage {
     private final Locator backpackRemoveButton;
     private final Locator bikeLightRemoveButton;
     private final Locator onesieRemoveButton;
+    private final Locator bikeLightProduct;
+    private final Locator tshirtRemoveButton;
+    private final Locator jacketProduct;
+    private final Locator testAllThingsTshirtProduct;
 
 
     public ProductsPage(){
@@ -61,6 +65,11 @@ public class ProductsPage extends BasePage {
         backpackRemoveButton = page.locator("#remove-sauce-labs-backpack");
         bikeLightRemoveButton = page.locator("#remove-sauce-labs-bike-light");
         onesieRemoveButton = page.locator("#remove-sauce-labs-onesie");
+        bikeLightProduct = page.locator(".inventory_item_name:has-text('Sauce Labs Bike Light')");
+        tshirtRemoveButton = page.locator("#remove-sauce-labs-bolt-t-shirt");
+        jacketProduct = page.locator(".inventory_item_name:has-text('Sauce Labs Fleece Jacket')");
+        testAllThingsTshirtProduct = page.locator(".inventory_item_name:has-text('Test.allTheThings() T-Shirt (Red)')");
+
 
     }
 
@@ -229,7 +238,39 @@ public class ProductsPage extends BasePage {
         Assert.assertEquals("Add to cart",tshirtAddToCartButton.textContent());
     }
 
-    public void verifyReturnsToProductPage() {
+    public void verifyProductsPageIsOpened() {
         Assert.assertEquals("Products", productsTitle.textContent());
+    }
+
+    public void clickBikeLightProduct() {
+        bikeLightProduct.click();
+    }
+
+
+
+
+
+    public void ClickTheJacketProduct() {
+        jacketProduct.click();
+
+    }
+
+
+    public void clickTestAllThingsTshirtProduct() {
+        testAllThingsTshirtProduct.click();
+    }
+
+
+
+    public void shouldSeeRemoveButtonForSauceLabsBoltTshirt(String buttonText) {
+        Assert.assertEquals(buttonText,tshirtRemoveButton.textContent());
+    }
+
+    public void shouldSeeRemoveButtonForSauceLabsBackpack(String buttonText) {
+        Assert.assertEquals(buttonText,backpackRemoveButton.textContent());
+    }
+
+    public void shouldSeeAddToCartButtonForSauceLabsBackpack(String buttonText) {
+        Assert.assertEquals(buttonText,onesieAddToCartButton.textContent());
     }
 }

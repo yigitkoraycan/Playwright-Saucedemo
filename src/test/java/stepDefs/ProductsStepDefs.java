@@ -34,7 +34,7 @@ public class ProductsStepDefs {
 
     @And("i click {string} add to cart buton")
     public void iClickTShirtAddToCartButon(String productName) {productsPage.addProductToTheCart(productName);
-        
+
     }
 
     @And("i click cart icon")
@@ -192,11 +192,45 @@ public class ProductsStepDefs {
 
     @Then("I verify that clicking the cancel button returns to the products page")
     public void i_verify_that_clicking_the_cancel_button_returns_to_the_products_page() {
-        productsPage.verifyReturnsToProductPage();
+        productsPage.verifyProductsPageIsOpened();
     }
 
-    @Then("I verify that clicking Back Home button returns to Products Page")
-    public void i_verify_that_clicking_back_home_button_returns_to_products_page() {
-        productsPage.verifyReturnsToProductPage();
+    @Then("I verify that Products Page is opened")
+    public void i_verify_that_products_page_is_opened() {
+        productsPage.verifyProductsPageIsOpened();
+    }
+
+    @When("I click bike light product")
+    public void i_click_bike_light_product() {
+        productsPage.clickBikeLightProduct();
+    }
+
+
+
+    @And("I click jacket product")
+    public void i_click_jacket_product() {
+        productsPage.ClickTheJacketProduct();
+    }
+
+
+    @And("I click test all things tshirt product")
+    public void i_click_test_all_things_tshirt_product() {
+        productsPage.clickTestAllThingsTshirtProduct();
+    }
+
+
+    @And("I should see {string} button for Sauce Labs Bolt T-Shirt")
+    public void i_should_see_remove_button_for_sauce_labs_bolt_tshirt(String buttonText) {
+        productsPage.shouldSeeRemoveButtonForSauceLabsBoltTshirt(buttonText);
+    }
+
+    @Then("I should see {string} button for Sauce Labs Backpack")
+    public void i_should_see_remove_button_for_sauce_labs_backpack(String buttonText) {
+        productsPage.shouldSeeRemoveButtonForSauceLabsBackpack(buttonText);
+    }
+
+    @Then("I should see {string} button for Sauce Labs Onesie")
+    public void i_should_see_add_to_cart_button_for_sauce_labs_backpack(String buttonText) {
+        productsPage.shouldSeeAddToCartButtonForSauceLabsBackpack(buttonText);
     }
 }

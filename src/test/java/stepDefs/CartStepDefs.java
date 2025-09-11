@@ -98,4 +98,19 @@ public class CartStepDefs {
     public void i_click_continue_shopping_button() {
         cartPage.clickContinueShoppingButton();
     }
+
+    @Then("I verify bike light product added to cart")
+    public void i_verify_bike_light_product_added_to_cart() {
+        cartPage.verifyBikeLightProductAddedToCart();
+    }
+
+    @And("I click bike light add to cart button on detail page")
+    public void i_click_bike_light_add_to_cart_button_on_detail_page() {
+        cartPage.clickBikeLightAddToCartButtonOnDetailPage();
+    }
+
+    @Then("I should see all products on cart page")
+    public void i_should_see_all_products_on_cart_page() {
+        cartPage.shouldSeeAllProductsOnCartPage();
+    }
 }
