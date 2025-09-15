@@ -464,6 +464,50 @@ Feature: Product Scenarios
     Then I should see "Add to cart" button for Sauce Labs Onesie
 
 
+    Scenario: User should not be able to see checkout complete page without adding a product to the cart
+      # Normalde chcekout complete sayfası görüntülenmemesi gerekirken görüntülendiği için otomasyon hata verecek!
+      Given I login with "standard_user"
+      When I click the cart icon
+      And I verify cart page is opened
+      And I click the checkout button
+      And fill your firstname with "koray"
+      And fill your lastname with "can"
+      And fill your postalcode with "123"
+      And I click the continue button
+      And I click the finish button
+      And I should not able to see checkout complete page
+
+      Scenario: User should see the Description label on the cart page
+        Given I login with "standard_user"
+        And I click test all the things tshirt add to cart button
+        And I click the cart icon
+        And I verify cart page is opened
+        Then I verify description label
+
+
+  Scenario: Verify cart icon on checkout complete page
+        Given I login with "standard_user"
+        When I click the cart icon
+        And I verify cart page is opened
+        And I click the checkout button
+        And fill your firstname with "koray"
+        And fill your lastname with "can"
+        And fill your postalcode with "123"
+        And I click the continue button
+        And I click the finish button
+        Then I verify cart icon on checkout complete page
+
+Scenario: Verify back pack product added to cart and removed on detail page
+  Given I login with "standard_user"
+  When I click backpack add to cart button
+  And I click the cart icon
+  And I verify cart page is opened
+  And I verify back pack product added to cart
+  And I click Continue Shopping button
+  And I click the backpack product
+  And I verify product detail page is opened
+  And I click remove button on detail page
+  Then I verify the quantity of the product should be ""
 
 
 

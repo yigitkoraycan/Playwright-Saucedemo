@@ -35,6 +35,7 @@ public class ProductsPage extends BasePage {
     private final Locator tshirtRemoveButton;
     private final Locator jacketProduct;
     private final Locator testAllThingsTshirtProduct;
+    private final Locator testAllThingsTshirtAddToCartButton;
 
 
     public ProductsPage(){
@@ -69,6 +70,7 @@ public class ProductsPage extends BasePage {
         tshirtRemoveButton = page.locator("#remove-sauce-labs-bolt-t-shirt");
         jacketProduct = page.locator(".inventory_item_name:has-text('Sauce Labs Fleece Jacket')");
         testAllThingsTshirtProduct = page.locator(".inventory_item_name:has-text('Test.allTheThings() T-Shirt (Red)')");
+        testAllThingsTshirtAddToCartButton = page.locator("#add-to-cart-test\\.allthethings\\(\\)-t-shirt-\\(red\\)");
 
 
     }
@@ -272,5 +274,8 @@ public class ProductsPage extends BasePage {
 
     public void shouldSeeAddToCartButtonForSauceLabsBackpack(String buttonText) {
         Assert.assertEquals(buttonText,onesieAddToCartButton.textContent());
+    }
+
+    public void clickTestAllThingsTshirtAddToCartButton() {
     }
 }

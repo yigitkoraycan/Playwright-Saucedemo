@@ -113,4 +113,14 @@ public class CartStepDefs {
     public void i_should_see_all_products_on_cart_page() {
         cartPage.shouldSeeAllProductsOnCartPage();
     }
+
+
+    @Then("I verify description label")
+    public void i_verify_description_label() {
+        cartPage.verifyDescriptionLabel();
+    }
+
+    @And("I verify back pack product added to cart")
+    public void i_verify_backpack_product_added_to_cart() {cartPage.verifyBackPackProductAddedToCart();
+    }
 }

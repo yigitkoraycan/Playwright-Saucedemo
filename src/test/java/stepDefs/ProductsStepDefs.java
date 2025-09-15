@@ -233,4 +233,12 @@ public class ProductsStepDefs {
     public void i_should_see_add_to_cart_button_for_sauce_labs_backpack(String buttonText) {
         productsPage.shouldSeeAddToCartButtonForSauceLabsBackpack(buttonText);
     }
+
+
+
+
+    @And("I click test all the things tshirt add to cart button")
+    public void i_click_test_all_the_things_tshirt_add_to_cart_button() {
+        productsPage.clickTestAllThingsTshirtAddToCartButton();
+    }
 }

@@ -26,4 +26,15 @@ public class CheckoutCompleteStepDefs {
     @And("I verify checkout complete page is opened")
     public void i_verify_checkout_complete_page_is_opened() {checkoutCompletePage.verifyCheckoutCompletePageIsOpened();
     }
+
+
+    @And("I should not able to see checkout complete page")
+    public void i_should_able_to_see_checkout_complete_page() {
+        checkoutCompletePage.shouldNotAbleToSeeCheckoutCompletePage();
+    }
+
+    @Then("I verify cart icon on checkout complete page")
+    public void i_verify_cart_icon_on_checkout_complete_page() {
+        checkoutCompletePage.verifyCartIconOnCheckoutCompletePage();
+    }
 }

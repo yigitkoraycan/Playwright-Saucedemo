@@ -20,6 +20,8 @@ public class CartPage extends BasePage {
     private final Locator addToCartButton;
     private final Locator jacketTitleOnCartPage;
     private final Locator testAllTheThingsTshirtTitleOnCartPage;
+    private final Locator descriptionLabel;
+
 
 
 
@@ -44,6 +46,8 @@ public class CartPage extends BasePage {
         addToCartButton = page.locator("#add-to-cart");
         jacketTitleOnCartPage =  page.locator("div.cart_item:has-text('Sauce Labs Fleece Jacket') .inventory_item_name");
         testAllTheThingsTshirtTitleOnCartPage = page.locator("div.cart_item:has-text('Test.allTheThings() T-Shirt (Red)') .inventory_item_name");
+        descriptionLabel = page.locator(".cart_desc_label");
+
 
     }
 
@@ -165,5 +169,16 @@ public class CartPage extends BasePage {
         Assert.assertEquals("Sauce Labs Fleece Jacket",jacketTitleOnCartPage.textContent());
         Assert.assertEquals("Sauce Labs Onesie",onesieTitleOnCartPage.textContent());
         Assert.assertEquals("Test.allTheThings() T-Shirt (Red)",testAllTheThingsTshirtTitleOnCartPage.textContent());
+    }
+
+
+
+    public void verifyBackPackProductAddedToCart() {
+        Assert.assertEquals("Sauce Labs Backpack",backpackTitleOnCartPage.textContent());
+    }
+
+    public void verifyDescriptionLabel() {
+        Assert.assertEquals("Description",descriptionLabel.textContent());
+
     }
 }
