@@ -507,7 +507,7 @@ Scenario: Verify back pack product added to cart and removed on detail page
   And I click the backpack product
   And I verify product detail page is opened
   And I click remove button on detail page
-  Then I verify the quantity of the product should be ""
+  Then I verify the quantity of the product should be "" on detail page
 
 
 

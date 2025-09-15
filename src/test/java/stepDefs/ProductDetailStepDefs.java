@@ -66,4 +66,9 @@ public class ProductDetailStepDefs {
     public void i_click_back_to_products_button() {
         productDetailPage.clickBackToProductsButton();
     }
+
+    @Then("I verify the quantity of the product should be {string} on detail page")
+    public void i_verify_the_qunatity_of_the_product_should_be(String expectedQuantity) {
+        productDetailPage.verifyTheQuantityOfTheProductShouldBe(expectedQuantity);
+    }
 }

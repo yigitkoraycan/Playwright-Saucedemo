@@ -74,8 +74,7 @@ public class CartPage extends BasePage {
     }
 
     public void verifyTheQuantityOfTheProductShouldBe(String expectedQuantity) {
-        Assert.assertEquals(expectedQuantity,productQuantityOnCartPage.textContent());
-
+        Assert.assertEquals(expectedQuantity, productQuantityOnCartPage.textContent());
     }
 
     public void verifyContinueShoppingButton() {

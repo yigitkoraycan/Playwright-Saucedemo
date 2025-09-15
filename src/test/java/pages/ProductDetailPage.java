@@ -10,15 +10,16 @@ public class ProductDetailPage extends BasePage {
     private final Locator onesiePriceOnDetailPage;
     private final Locator cartIcon;
     private final Locator backToProductsButton;
+    private final Locator cartQuantity;
 
 
     public ProductDetailPage(){
         addToCartButton = page.locator("#add-to-cart");
         removeButton = page.locator("#remove");
-
         onesiePriceOnDetailPage = page.locator(".inventory_details_price");
         cartIcon = page.locator(".shopping_cart_link");
         backToProductsButton = page.locator("#back-to-products");
+        cartQuantity = page.locator(".shopping_cart_link");
 
 
     }
@@ -67,6 +68,10 @@ public class ProductDetailPage extends BasePage {
 
     public void clickBackToProductsButton() {
         backToProductsButton.click();
+    }
+
+    public void verifyTheQuantityOfTheProductShouldBe(String expectedQuantity) {
+        Assert.assertEquals(expectedQuantity,cartQuantity.textContent());
     }
 }
 
